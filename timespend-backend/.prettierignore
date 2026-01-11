@@ -1,0 +1,15 @@
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# Ignore IDE specific files
+.vscode/.idea/*.iml
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
+# Ignore Prettier cache
+.prettiercache
+# Ignore Prettier config files
+.prettierrc
+.prettierrc.json
