@@ -11,6 +11,6 @@ app.get("/", (req, res) => {
     res.send("TimeSpend Backend is running 🚀");
 });
 
-app.use("/api/users", userRoutes);
+app.use("/api/v1/users", userRoutes);
 
 export default app;
