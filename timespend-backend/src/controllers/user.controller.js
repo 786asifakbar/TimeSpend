@@ -11,10 +11,13 @@ import ApiResponse from "../utils/ApiResponse.js";
 // REGISTER USER
 // ======================
 const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password } = req.body
 
-    if (!name || !email || !password) {
-        throw new ApiError(400, "All fields are required");
+    if (
+        [name, email, password].some((field) =>
+            field?.trim() === "")
+    ) {
+        throw new ApiError(400, "All field are required")
     }
 
     const userExists = await User.findOne({ email });
