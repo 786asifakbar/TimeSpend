@@ -1,1 +1,1 @@
-export const DB_NAME = 'timespend'; 
+export const DB_NAME = 'timespend30'; 
