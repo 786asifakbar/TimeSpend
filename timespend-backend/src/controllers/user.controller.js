@@ -40,6 +40,8 @@ const registerUser = async (req, res) => {
     }
 };
 
+
+
 // LOGIN
 const loginUser = async (req, res) => {
     try {
