@@ -3,6 +3,9 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.route.js";
 import expenseRoutes from "./routes/expense.route.js";
+import timeRoutes from "./routes/time.route.js";
+
+
 
 
 const app = express();
@@ -27,8 +30,9 @@ app.get("/", (req, res) => {
     res.send("TimeSpend Backend is running 🚀");
 });
 
-app.use("/api/v1/users", userRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/expenses", expenseRoutes);
+app.use("/api/time", timeRoutes);
 
 // ======================
 // GLOBAL ERROR HANDLER
