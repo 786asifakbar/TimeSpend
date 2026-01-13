@@ -7,7 +7,7 @@ import timeRoutes from "./routes/time.route.js";
 import insightRoutes from "./routes/insight.route.js";
 import goalRoutes from "./routes/goal.route.js";
 import reportRoutes from "./routes/report.route.js";
-
+import subscriptionRoutes from "./routes/subscription.route.js";
 
 
 
@@ -44,7 +44,7 @@ app.use("/api/time", timeRoutes);
 app.use("/api/insights", insightRoutes);
 app.use("/api/goals", goalRoutes);
 app.use("/api/reports", reportRoutes);
-
+app.use("/api/subscription", subscriptionRoutes);
 
 
 // ======================
