@@ -6,7 +6,7 @@ import expenseRoutes from "./routes/expense.route.js";
 import timeRoutes from "./routes/time.route.js";
 import insightRoutes from "./routes/insight.route.js";
 import goalRoutes from "./routes/goal.route.js";
-
+import reportRoutes from "./routes/report.route.js";
 
 
 
@@ -40,6 +40,7 @@ app.use("/api/expenses", expenseRoutes);
 app.use("/api/time", timeRoutes);
 app.use("/api/insights", insightRoutes);
 app.use("/api/goals", goalRoutes);
+app.use("/api/reports", reportRoutes);
 
 
 
