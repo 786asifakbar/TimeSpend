@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import { User } from "../models/user.model.js";
 import { generateToken } from "../utils/generateToken.js";
-
 import asyncHandler from "../utils/asyncHandler.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
@@ -32,6 +31,7 @@ const registerUser = asyncHandler(async (req, res) => {
         email,
         password: hashedPassword,
     });
+
 
     res.status(201).json(
         new ApiResponse(
