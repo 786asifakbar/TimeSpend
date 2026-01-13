@@ -1,13 +1,22 @@
-// middleware/checkPro.js
+import asyncHandler from "../utils/asyncHandler.js";
+import ApiError from "../utils/ApiError.js";
 import { Subscription } from "../models/subscription.model.js";
-import { ApiError } from "../utils/ApiError.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
 
 const checkPro = asyncHandler(async (req, res, next) => {
-    const sub = await Subscription.findOne({ user: req.user._id });
+    if (!req.user) {
+        throw new ApiError(401, "Unauthorized");
+    }
 
-    if (!sub || sub.plan !== "pro") {
-        throw new ApiError(403, "Upgrade to Pro to access this feature");
+    const subscription = await Subscription.findOne({
+        user: req.user._id,
+        status: "active",
+    });
+
+    if (!subscription || subscription.plan !== "pro") {
+        throw new ApiError(
+            403,
+            "Upgrade to Pro to access this feature"
+        );
     }
 
     next();
