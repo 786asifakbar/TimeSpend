@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.route.js";
 import expenseRoutes from "./routes/expense.route.js";
 import timeRoutes from "./routes/time.route.js";
+import insightRoutes from "./routes/insight.route.js";
+
 
 
 
@@ -33,6 +35,11 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/time", timeRoutes);
+app.use("/api/insights", insightRoutes);
+
+
+
+
 
 // ======================
 // GLOBAL ERROR HANDLER
