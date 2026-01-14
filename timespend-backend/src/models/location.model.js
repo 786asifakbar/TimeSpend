@@ -10,7 +10,6 @@ const locationSchema = new mongoose.Schema(
         country: String,
         city: String,
         region: String,
-        isp: String,
     },
     { timestamps: true }
 );

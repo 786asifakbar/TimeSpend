@@ -11,5 +11,5 @@ const router = express.Router();
 router.post("/", protect, addTimeLog);
 router.get("/", protect, getTimeLogs);
 router.get("/productivity", protect, getProductivityScore);
-
+router.post("/timelog", protect, captureLocation, createTimeLog);
 export default router;

@@ -1,25 +1,23 @@
-import axios from "axios";
+import geoip from "geoip-lite";
 import asyncHandler from "../utils/asyncHandler.js";
 import { Location } from "../models/location.model.js";
 
 const captureLocation = asyncHandler(async (req, res, next) => {
+    // get user IP
     const ip =
         req.headers["x-forwarded-for"]?.split(",")[0] ||
-        req.socket.remoteAddress;
+        req.socket.remoteAddress ||
+        req.ip;
 
-    // free IP lookup service
-    const { data } = await axios.get(
-        `http://ip-api.com/json/${ip}`
-    );
+    const geo = geoip.lookup(ip);
 
-    if (data?.status === "success") {
+    if (geo && req.user) {
         await Location.create({
-            user: req.user?._id,
+            user: req.user._id,
             ip,
-            country: data.country,
-            city: data.city,
-            region: data.regionName,
-            isp: data.isp,
+            country: geo.country,
+            city: geo.city,
+            region: geo.region,
         });
     }
 

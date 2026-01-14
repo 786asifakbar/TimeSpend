@@ -8,7 +8,7 @@ import {
     getCategorySummary,
 } from "../controllers/expense.controller.js";
 import protect from "../middlewares/auth.middleware.js";
-
+import captureLocation from "../middlewares/location.middleware.js";
 
 
 
@@ -21,12 +21,7 @@ router.put("/:id", protect, updateExpense);
 router.delete("/:id", protect, deleteExpense);
 router.get("/monthly/total", protect, getMonthlyTotal);
 router.get("/summary/category", protect, getCategorySummary);
-// router.post(
-//     "/",
-//     protect,
-//     captureLocation,
-//     createExpense
-// );
+router.post("/expenses", protect, captureLocation, createExpense);
 
 
 export default router;
