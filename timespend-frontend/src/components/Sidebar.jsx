@@ -6,15 +6,11 @@ const Sidebar = () => {
       <h2 className="text-2xl font-bold mb-10">TimeSpend</h2>
 
       <nav className="space-y-4">
-        <NavLink to="/dashboard" className="block hover:text-gray-300">
-          Dashboard
-        </NavLink>
-        <NavLink to="/expenses" className="block hover:text-gray-300">
-          Expenses
-        </NavLink>
-        <NavLink to="/reports" className="block hover:text-gray-300">
-          Reports
-        </NavLink>
+        <NavLink to="/dashboard" className="block hover:text-gray-300"> Dashboard </NavLink>
+        <NavLink to="/expenses" className="block hover:text-gray-300"> Expenses </NavLink>
+        <NavLink to="/reports" className="block hover:text-gray-300"> Reports </NavLink>
+        <NavLink to="/timelogs"> Time Logs </NavLink>
+
       </nav>
     </aside>
   );

@@ -1,4 +1,3 @@
-
 import { React ,useState } from "react";
 import api from "../api/axios.js";
 
@@ -12,6 +11,7 @@ const Register = () => {
   };
 
   return (
+    <>
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form
         onSubmit={handleSubmit}
@@ -43,7 +43,7 @@ const Register = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
-
 export default Register;

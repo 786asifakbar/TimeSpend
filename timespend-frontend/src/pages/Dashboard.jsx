@@ -3,6 +3,7 @@ import StatCard from "../components/StatCard.jsx";
 
 const Dashboard = () => {
   return (
+    <>
     <DashboardLayout>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <StatCard title="Total Expense" value="Rs 12,500" />
@@ -10,6 +11,7 @@ const Dashboard = () => {
         <StatCard title="This Month" value="January" />
       </div>
     </DashboardLayout>
+    </>
   );
 };
 
