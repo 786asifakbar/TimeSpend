@@ -1,12 +1,24 @@
-import './App.css'
+import { Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import Expenses from "./pages/Expenses";
+import Reports from "./pages/Reports";
+import { useAuth } from "./context/AuthContext";
 
-function App() {
+const App = () => {
+  const { user } = useAuth();
 
   return (
-    <>
-      <h1>Wellcome to TimpSpend Website </h1>
-    </>
-  )
-}
+    <Routes>
+      <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Login />} />
+      <Route path="/register" element={<Register />} />
 
-export default App
+      <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
+      <Route path="/expenses" element={user ? <Expenses /> : <Navigate to="/" />} />
+      <Route path="/reports" element={user ? <Reports /> : <Navigate to="/" />} />
+    </Routes>
+  );
+};
+
+export default App;
