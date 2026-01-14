@@ -17,7 +17,7 @@ const app = express();
 // ✅ CORS CONFIG (THIS FIXES EVERYTHING)
 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -27,7 +27,7 @@ app.use(cors({
 
 
 // ✅ PRE-FLIGHT SUPPORT
-app.options("*", cors());
+//app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -57,5 +57,4 @@ app.use((err, req, res, next) => {
         errors: err.errors || [],
     })
 })
-
 export default app   
