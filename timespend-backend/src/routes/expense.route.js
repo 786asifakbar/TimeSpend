@@ -21,6 +21,12 @@ router.put("/:id", protect, updateExpense);
 router.delete("/:id", protect, deleteExpense);
 router.get("/monthly/total", protect, getMonthlyTotal);
 router.get("/summary/category", protect, getCategorySummary);
+// router.post(
+//     "/",
+//     protect,
+//     captureLocation,
+//     createExpense
+// );
 
 
 export default router;
