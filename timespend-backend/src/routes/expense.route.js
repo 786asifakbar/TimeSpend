@@ -11,7 +11,6 @@ import protect from "../middlewares/auth.middleware.js";
 import captureLocation from "../middlewares/location.middleware.js";
 
 
-
 const router = express.Router();
 
 // Protected routes
@@ -21,7 +20,7 @@ router.put("/:id", protect, updateExpense);
 router.delete("/:id", protect, deleteExpense);
 router.get("/monthly/total", protect, getMonthlyTotal);
 router.get("/summary/category", protect, getCategorySummary);
-router.post("/expenses", protect, captureLocation, createExpense);
+router.post("/expenses", protect, captureLocation, addExpense);
 
 
 export default router;

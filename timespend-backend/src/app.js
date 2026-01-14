@@ -9,31 +9,31 @@ import goalRoutes from "./routes/goal.route.js";
 import reportRoutes from "./routes/report.route.js";
 import subscriptionRoutes from "./routes/subscription.route.js";
 
-
-
-
-
-
-
-
 const app = express();
 
 // ======================
 // MIDDLEWARES
 // ======================
+// ✅ CORS CONFIG (THIS FIXES EVERYTHING)
+
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
-    credentials: true
-}));
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+})
+);
 
+
+
+// ✅ PRE-FLIGHT SUPPORT
+app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
 // ======================
 // ROUTES
 // ======================
-
 app.get("/", (req, res) => {
     res.send("TimeSpend Backend is running 🚀");
 });
@@ -45,20 +45,17 @@ app.use("/api/insights", insightRoutes);
 app.use("/api/goals", goalRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/subscription", subscriptionRoutes);
-
-
 // ======================
 // GLOBAL ERROR HANDLER
 // ======================
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
-
     res.status(statusCode).json({
         success: false,
         message: err.message || "Internal Server Error",
         errors: err.errors || [],
-    });
-});
+    })
+})
 
-export default app;
+export default app   
