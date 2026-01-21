@@ -141,6 +141,4 @@ export {
     deleteExpense,
     getMonthlyTotal,
     getCategorySummary,
-
-
 };

@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.route.js";
+
 import expenseRoutes from "./routes/expense.route.js";
 import timeRoutes from "./routes/time.route.js";
 import insightRoutes from "./routes/insight.route.js";
@@ -20,6 +21,7 @@ app.use(cors({
     origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
 })
 );
@@ -34,11 +36,14 @@ app.use(cookieParser());
 // ======================
 // ROUTES
 // ======================
+
 app.get("/", (req, res) => {
     res.send("TimeSpend Backend is running 🚀");
 });
 
+
 app.use("/api/users", userRoutes);
+
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/time", timeRoutes);
 app.use("/api/insights", insightRoutes);
@@ -57,4 +62,5 @@ app.use((err, req, res, next) => {
         errors: err.errors || [],
     })
 })
+
 export default app   
