@@ -18,7 +18,7 @@ const app = express();
 // ✅ CORS CONFIG (THIS FIXES EVERYTHING)
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     origin: process.env.CORS_ORIGIN,
