@@ -6,8 +6,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '/api': 'http://localhost:3000'    // is code likhny ka maqsad hai k jb bhi apllication kise bhi port
-      // par open ho to usko is port k sath replace kar de
+      '/api': 'http://localhost:5000'
     },
   },
 

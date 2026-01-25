@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import api from "../api/axios";
 import { handleApiError } from "../utils/handleApiError";
 import UpgradeProModal from "../components/UpgradeProModal";
@@ -14,7 +14,11 @@ const Reports = () => {
   const fetchReport = async () => {
     try {
       const res = await api.get(
-        `/reports/monthly?month=${month}&year=${year}`
+        `/reports/monthly?month=${month}&year=${year}`, {
+          headers: {
+            "authorization": localStorage.getItem("token")
+          }
+        }
       );
       setData(res.data.data);
       setError("");

@@ -12,14 +12,12 @@ const checkPro = asyncHandler(async (req, res, next) => {
         status: "active",
     });
 
-    if (!subscription || subscription.plan !== "pro") {
-        throw new ApiError(
-            403,
-            "Upgrade to Pro to access this feature"
-        );
-    }
-
+    // if (!subscription || subscription.plan !== "pro") {
+    //     throw new ApiError(
+    //         403,
+    //         "Upgrade to Pro to access this feature"
+    //     );
+    // }
     next();
 });
-
 export default checkPro;

@@ -1,14 +1,7 @@
-import express from "express";
 import cors from "cors";
+import express from "express";
 import cookieParser from "cookie-parser";
 
-import userRoutes from "./routes/user.route.js";
-import expenseRoutes from "./routes/expense.route.js";
-import timeRoutes from "./routes/time.route.js";
-import insightRoutes from "./routes/insight.route.js";
-import goalRoutes from "./routes/goal.route.js";
-import reportRoutes from "./routes/report.route.js";
-import subscriptionRoutes from "./routes/subscription.route.js";
 
 const app = express();
 
@@ -16,19 +9,14 @@ const app = express();
 // MIDDLEWARES
 // ======================
 // ✅ CORS CONFIG (THIS FIXES EVERYTHING)
-
 app.use(cors({
-    origin: "http://localhost:5173/",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    origin: process.env.CORS_ORIGIN,
+    origin: "http://localhost:5173",
     credentials: true,
 })
 );
 
 // ✅ PRE-FLIGHT SUPPORT
 //app.options("*", cors());
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -41,7 +29,17 @@ app.get("/", (req, res) => {
     res.send("TimeSpend Backend is running 🚀");
 });
 
+import userRoutes from "./routes/user.route.js";
+import expenseRoutes from "./routes/expense.route.js";
+import timeRoutes from "./routes/time.route.js";
+import insightRoutes from "./routes/insight.route.js";
+import goalRoutes from "./routes/goal.route.js";
+import reportRoutes from "./routes/report.route.js";
+import subscriptionRoutes from "./routes/subscription.route.js";
+
+
 app.use("/api/users", userRoutes);
+
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/time", timeRoutes);
 app.use("/api/insights", insightRoutes);

@@ -10,8 +10,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data } = await api.post("/users/login", { email, password })
-    login(data)
+    const data = await api.post("/users/login", { email, password }, {
+      headers: {
+        "Access-Control-Allow-Origin": true
+      }
+    })
+    login(data.data)
   };
 
   return (

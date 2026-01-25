@@ -20,8 +20,6 @@ const captureLocation = asyncHandler(async (req, res, next) => {
             region: geo.region,
         });
     }
-
     next();
 });
-
 export default captureLocation;

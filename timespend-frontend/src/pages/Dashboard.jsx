@@ -7,25 +7,25 @@ const Dashboard = () => {
   const [stats, setStats] = useState(null);
   const [showUpgrade, setShowUpgrade] = useState(false);
 
-  const fetchDashboard = async () => {
-    try {
-      const now = new Date();
-      const month = now.getMonth() + 1;
-      const year = now.getFullYear();
-
-      const res = await api.get(
-        `/reports/monthly?month=${month}&year=${year}`
-      );
-
-      setStats(res.data.data);
-    } catch (err) {
-      if (err.response?.status === 403) {
-        setShowUpgrade(true);
-      }
-    }
-  };
-
+  
   useEffect(() => {
+    const fetchDashboard = async () => {
+      try {
+        const now = new Date();
+        const month = now.getMonth() + 1;
+        const year = now.getFullYear();
+  
+        const res = await api.get(
+          `/reports/monthly?month=${month}&year=${year}`
+        );
+  
+        setStats(res.data.data);
+      } catch (err) {
+        if (err.response?.status === 403) {
+          setShowUpgrade(true);
+        }
+      }
+    };
     fetchDashboard();
   }, []);
 
