@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 import MonthlyExpenseChart from "../components/MonthlyExpenseChart";
 import UpgradeProModal from "../components/UpgradeProModal";
+import { useAuth } from "../context/AuthContext";
 
 const Dashboard = () => {
   const [stats, setStats] = useState(null);
   const [showUpgrade, setShowUpgrade] = useState(false);
+  const {logout}= useAuth()
 
   
   useEffect(() => {
@@ -33,6 +35,7 @@ const Dashboard = () => {
 
   return (
     <div className="p-6">
+      <button className="bg-black px-10 py-3 text-white rounded-md" onClick={logout}>Logout</button>
       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
 
       {/* Insight Cards */}
@@ -48,6 +51,7 @@ const Dashboard = () => {
       {showUpgrade && (
         <UpgradeProModal onClose={() => setShowUpgrade(false)} />
       )}
+      
     </div>
   );
 };
